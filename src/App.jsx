@@ -1,6 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
 import { PRODUCTS, SIZES, fmt } from "./data/products.js";
-import Garment from "./components/Garment.jsx";
 
 const CATS = ["All", "Tees", "Hoodies", "Bottoms", "Accessories"];
 const TICKER = "FREE DELIVERY IN LAGOS OVER ₦50,000 · NATIONWIDE SHIPPING 2–5 DAYS · ÈKÓ Ò NÍ BÀJÉ · NEW DROP LIVE NOW · ";
@@ -30,7 +29,7 @@ export default function App() {
     setCart(c => {
       const hit = c.find(i => i.key === key);
       return hit ? c.map(i => i.key === key ? { ...i, qty: i.qty + 1 } : i)
-                 : [...c, { key, id: p.id, name: p.name, price: p.price, size: s, garment: p.garment, base: p.base, ink: p.ink, qty: 1 }];
+                 : [...c, { key, id: p.id, name: p.name, price: p.price, size: s, img: p.img, qty: 1 }];
     });
     setPaid(false);
     setDrawer(true);
@@ -57,8 +56,8 @@ export default function App() {
 
       {product ? (
         <section className="pview">
-          <div className="pview-img" style={{ background: product.base === "#111110" || product.base === "#1a1a1a" ? "#DDD8CB" : "#FAF9F5" }}>
-            <Garment type={product.garment} base={product.base} ink={product.ink} />
+          <div className="pview-img">
+            <img src={product.img} alt={product.name} />
           </div>
           <div className="pview-info">
             <button className="back-link" onClick={() => goShop(cat)}>← Back to shop</button>
@@ -97,8 +96,8 @@ export default function App() {
               </div>
             </div>
             <div className="hero-art">
-              <Garment type="hoodie" base="#111110" ink="#FFD02F" />
-              <span className="hero-stamp">EK-004 / BEST SELLER</span>
+              <img src="/img/hero.webp" alt="Model wearing the Ojuelegba Hoodie on a Lagos street" loading="eager" />
+              <span className="hero-stamp">EK-004 / OJUELEGBA HOODIE</span>
             </div>
           </header>
 
@@ -116,9 +115,9 @@ export default function App() {
             <div className="grid">
               {items.map(p => (
                 <button key={p.id} className="pcard" onClick={() => setView({ page: "product", id: p.id })}>
-                  <div className="pcard-img" style={{ background: p.base === "#111110" || p.base === "#1a1a1a" ? "#DDD8CB" : "#F6F4EE" }}>
+                  <div className="pcard-img">
                     {p.tag && <span className="ptag">{p.tag}</span>}
-                    <Garment type={p.garment} base={p.base} ink={p.ink} />
+                    <img src={p.img} alt={p.name} loading="lazy" />
                   </div>
                   <div className="pcard-info">
                     <span className="psku">{p.id}</span>
@@ -128,6 +127,13 @@ export default function App() {
                 </button>
               ))}
             </div>
+          </section>
+
+          <div className="hazard" aria-hidden="true"></div>
+
+          <section className="street">
+            <img src="/img/street.webp" alt="ÈKÓ streetwear worn in the city" loading="lazy" />
+            <div className="street-caption">WORN ON THE STREET — <em>ÈKÓ Ò NÍ BÀJÉ</em></div>
           </section>
 
           <div className="hazard" aria-hidden="true"></div>
@@ -160,7 +166,7 @@ export default function App() {
               {cart.length === 0 && <div className="drawer-empty">CART IS EMPTY.<br />NO WAHALA — GO ADD SOMETHING.</div>}
               {cart.map(i => (
                 <div className="cart-row" key={i.key}>
-                  <div className="cart-thumb"><Garment type={i.garment} base={i.base} ink={i.ink} /></div>
+                  <div className="cart-thumb"><img src={i.img} alt={i.name} /></div>
                   <div>
                     <div className="cart-name">{i.name}</div>
                     <div className="cart-meta">{i.id} · SIZE {i.size}</div>

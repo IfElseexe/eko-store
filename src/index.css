@@ -50,9 +50,10 @@ a { color: inherit; }
 .btn { border: 2px solid var(--ink); padding: 13px 26px; font-family: var(--font-mono); font-weight: 700; font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; background: var(--card); color: var(--ink); transition: transform 0.12s ease, box-shadow 0.12s ease; }
 .btn:hover { transform: translate(-2px, -2px); box-shadow: 4px 4px 0 var(--ink); }
 .btn-yellow { background: var(--danfo); }
-.hero-art { border-left: 2px solid var(--ink); background: var(--danfo); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
-.hero-art svg { width: min(72%, 380px); height: auto; filter: drop-shadow(6px 6px 0 rgba(17,17,16,0.25)); }
-.hero-stamp { position: absolute; bottom: 18px; right: 18px; font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.14em; background: var(--ink); color: var(--danfo); padding: 6px 12px; }
+.hero-art { border-left: 2px solid var(--ink); position: relative; overflow: hidden; background: var(--ink); }
+.hero-art img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; filter: saturate(0.92); }
+.hero-art::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 55%, rgba(17,17,16,0.55)); pointer-events: none; }
+.hero-stamp { z-index: 2; position: absolute; bottom: 18px; right: 18px; font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.14em; background: var(--ink); color: var(--danfo); padding: 6px 12px; }
 
 /* SHOP */
 .shop { padding: clamp(28px, 5vw, 64px) clamp(16px, 4vw, 40px); }
@@ -64,9 +65,10 @@ a { color: inherit; }
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 0; border: 2px solid var(--ink); }
 .pcard { background: var(--card); border: 1px solid var(--line); outline: 1px solid var(--ink); display: flex; flex-direction: column; text-align: left; padding: 0; transition: background 0.15s ease; }
 .pcard:hover { background: #fff; }
-.pcard-img { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; padding: 14px; position: relative; border-bottom: 2px solid var(--ink); }
-.pcard-img svg { width: 82%; height: auto; transition: transform 0.2s ease; }
-.pcard:hover .pcard-img svg { transform: translateY(-4px) rotate(-1.5deg); }
+.pcard-img { aspect-ratio: 1; position: relative; border-bottom: 2px solid var(--ink); overflow: hidden; background: #EDEBE4; }
+.pcard-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.25s ease; }
+.pcard:hover .pcard-img img { transform: scale(1.04); }
+.ptag { z-index: 2; }
 .ptag { position: absolute; top: 10px; left: 10px; background: var(--ink); color: var(--danfo); font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.12em; padding: 4px 8px; }
 .pcard-info { padding: 14px 16px 18px; display: flex; flex-direction: column; gap: 4px; }
 .psku { font-family: var(--font-mono); font-size: 0.68rem; color: var(--ink-soft); letter-spacing: 0.1em; }
@@ -75,8 +77,8 @@ a { color: inherit; }
 
 /* PRODUCT VIEW */
 .pview { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 2px solid var(--ink); min-height: 70vh; }
-.pview-img { display: flex; align-items: center; justify-content: center; border-right: 2px solid var(--ink); padding: 40px; }
-.pview-img svg { width: min(78%, 420px); height: auto; filter: drop-shadow(8px 8px 0 rgba(17,17,16,0.18)); }
+.pview-img { border-right: 2px solid var(--ink); overflow: hidden; background: #EDEBE4; min-height: 46vh; }
+.pview-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .pview-info { padding: clamp(28px, 5vw, 60px); display: flex; flex-direction: column; gap: 18px; background: var(--card); }
 .back-link { align-self: flex-start; background: none; border: none; font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.08em; color: var(--ink-soft); text-transform: uppercase; }
 .back-link:hover { color: var(--ink); }
@@ -100,7 +102,8 @@ a { color: inherit; }
 .drawer-close { background: none; border: 2px solid var(--ink); width: 36px; height: 36px; font-weight: 700; }
 .drawer-items { flex: 1; overflow-y: auto; padding: 12px 22px; display: flex; flex-direction: column; gap: 12px; }
 .cart-row { display: grid; grid-template-columns: 64px 1fr auto; gap: 12px; align-items: center; border: 2px solid var(--ink); background: var(--card); padding: 10px; }
-.cart-thumb { width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; }
+.cart-thumb { width: 64px; height: 64px; overflow: hidden; border: 2px solid var(--ink); }
+.cart-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .cart-name { font-weight: 700; font-size: 0.9rem; line-height: 1.25; }
 .cart-meta { font-family: var(--font-mono); font-size: 0.7rem; color: var(--ink-soft); }
 .qty { display: flex; align-items: center; gap: 8px; margin-top: 6px; }
@@ -117,6 +120,12 @@ a { color: inherit; }
 .checkout-btn { border: 2px solid var(--ink); background: var(--ink); color: var(--danfo); padding: 15px; font-family: var(--font-display); font-size: 1.1rem; letter-spacing: 0.06em; text-transform: uppercase; }
 .checkout-btn:hover { background: var(--danfo); color: var(--ink); }
 .paid-msg { text-align: center; font-family: var(--font-mono); font-size: 0.82rem; background: var(--danfo); border: 2px solid var(--ink); padding: 12px; }
+
+/* STREET / LIFESTYLE */
+.street { position: relative; border-bottom: 2px solid var(--ink); max-height: 78vh; overflow: hidden; }
+.street img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(0.92); }
+.street-caption { position: absolute; bottom: 0; left: 0; right: 0; padding: 16px clamp(16px, 4vw, 40px); background: linear-gradient(180deg, transparent, rgba(17,17,16,0.82)); color: var(--paper); font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.14em; }
+.street-caption em { font-style: normal; color: var(--danfo); }
 
 /* MARQUEE SECTION / FOOTER */
 .about-band { display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: 2px solid var(--ink); }
