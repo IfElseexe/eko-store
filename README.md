@@ -2,7 +2,7 @@
 
 A fashion e-commerce storefront demo built with **React + Vite**. ÈKÓ (Yoruba for Lagos) is a fictional Lagos-born streetwear brand — heavyweight tees, hoodies, cargos and accessories, priced in Naira.
 
-**Live demo:** _(deployed on Vercel)_
+**Live demo:** https://eko-store-teal.vercel.app
 
 ## Features
 - Product catalog with category filtering (Tees, Hoodies, Bottoms, Accessories)
