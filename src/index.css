@@ -146,3 +146,30 @@ a { color: inherit; }
   .band-cell:last-child { border-bottom: none; }
   .nav-links { display: none; }
 }
+
+/* ── STRIDE-style upgrade ── */
+.stars{font-family:var(--font-mono);font-size:.78rem;color:var(--ink)}
+.stars em{font-style:normal;color:var(--ink-soft)}
+.prow{display:flex;align-items:center;justify-content:space-between;margin-top:6px}
+.parrow{font-weight:700;color:var(--danfo-deep)}
+.also{padding:40px clamp(16px,4vw,40px) 64px}
+.also h2{font-family:var(--font-display);font-size:1.6rem;text-transform:uppercase;margin-bottom:18px}
+.cartpage{padding:48px clamp(16px,4vw,40px) 72px;max-width:1080px;margin:0 auto;min-height:55vh}
+.cartpage h1{font-family:var(--font-display);font-size:clamp(1.8rem,5vw,2.6rem);text-transform:uppercase;margin-bottom:24px}
+.cart-grid{display:grid;gap:22px}
+@media(min-width:860px){.cart-grid{grid-template-columns:1.5fr 1fr;align-items:start}}
+.cart-items{display:flex;flex-direction:column;gap:12px}
+.summary{border:2px solid var(--ink);background:var(--card);padding:22px;display:flex;flex-direction:column;gap:12px;position:sticky;top:80px}
+.summary h2{font-family:var(--font-display);font-size:1.2rem;text-transform:uppercase}
+.page{padding:52px clamp(16px,4vw,40px) 80px;max-width:760px;margin:0 auto;min-height:55vh}
+.page h1{font-family:var(--font-display);font-size:clamp(1.8rem,5vw,2.6rem);text-transform:uppercase;margin-bottom:18px}
+.page p{color:var(--ink-soft);margin-bottom:14px}
+.page details{border:2px solid var(--ink);background:var(--card);margin-bottom:10px}
+.page summary{cursor:pointer;font-weight:700;padding:14px 16px;list-style:none}
+.page summary::-webkit-details-marker{display:none}
+.page details p{padding:0 16px 14px;margin:0}
+.notfound{padding:100px 20px;text-align:center;font-family:var(--font-mono);min-height:50vh}
+.footer-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:18px;margin:26px 0 6px}
+.footer-cols b{display:block;font-family:var(--font-mono);font-size:.72rem;letter-spacing:.14em;color:var(--danfo);text-transform:uppercase;margin-bottom:10px}
+.footer-cols a{display:block;color:#B9B5A9;text-decoration:none;font-size:.88rem;margin-bottom:7px}
+.footer-cols a:hover{color:var(--danfo)}
